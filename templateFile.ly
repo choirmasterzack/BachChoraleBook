@@ -1,5 +1,17 @@
 \version "2.19.28"
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Template File cobbled together by Zack von Menchhofen 
+%
+% http://www.zacheryv.com
+% http://www.choirmaster.ca
+% http://www.choir.space
+%
+%
+% Feel Free to Use
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \header {
   %title = "Title"
   %subtitle = "Subtitle"
@@ -38,13 +50,13 @@
   evenHeaderMarkup = \markup \fill-line { " "  }
   oddFooterMarkup = \markup { 
                         \fill-line {
-                          \line {   \tiny \bold \smallCaps "Bach::Riemenschneider "    }
+                          \line {   \tiny \bold \smallCaps "Bach::Riemenschneider/vonMenchhofen "    }
                           \line { \tiny \bold \smallCaps "Page: "   \on-the-fly #print-page-number-check-first \fromproperty #'page:page-number-string } 
                         } 
                       }
   evenFooterMarkup = \markup { 
                         \fill-line {
-                          \line { \tiny \bold \smallCaps "Bach::Riemenschneider"  }
+                          \line { \tiny \bold \smallCaps "Bach::Riemenschneider/vonMenchhofen"  }
                           \line { \tiny \bold \smallCaps  "    Page: "   \on-the-fly #print-page-number-check-first \fromproperty #'page:page-number-string  } 
                         } 
                       }
@@ -171,17 +183,19 @@ bassFiguresPart = \new FiguredBass \figBass
   }
 }
 
-#(define-markup-command (columns layout props args) (markup-list?)
-   (let ((line-width (/ (chain-assoc-get 'line-width props
-                         (ly:output-def-lookup layout 'line-width))
-                        (max (length args) 1))))
-     (interpret-markup layout props
-       (make-line-markup (map (lambda (line)
-                                (markup #:pad-to-box `(0 . ,line-width) '(0 . 0)
-                                  #:override `(line-width . ,line-width)
-                                  line))
-                               args)))))
-
+%%%%%%%%%%% USE THIS SECTION FOR TWO COLUMN TEXT BELOW MUSIC
+%
+%#(define-markup-command (columns layout props args) (markup-list?)
+%   (let ((line-width (/ (chain-assoc-get 'line-width props
+%                         (ly:output-def-lookup layout 'line-width))
+%                        (max (length args) 1))))
+%     (interpret-markup layout props
+%       (make-line-markup (map (lambda (line)
+%                                (markup #:pad-to-box `(0 . ,line-width) '(0 . 0)
+%                                  #:override `(line-width . ,line-width)
+%                                  line))
+%                               args)))))
+%
 %\markup {
 %  \fill-line { 
 %     \line { 
