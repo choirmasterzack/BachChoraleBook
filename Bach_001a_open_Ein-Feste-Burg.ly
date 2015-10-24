@@ -13,7 +13,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \header {
-  %title = "Title"
+    %title = "Title"
   %subtitle = "Subtitle"
   composer = "Johann Sebastian Bach (1685-1750)"
   arranger = "Used in Cantata BWV 80"
@@ -32,21 +32,23 @@
 #(set-global-staff-size 17)
 
 \paper {
-  #(set-paper-size "letter")
+#(set-paper-size "letter")
   page-break = #ly:minimal-breaking
    #(include-special-characters)
-  %between-system-space = 10\mm
   two-sided = true
   top-margin = .3\in
   bottom-margin = .3\in 
-  %inner-margin = 1\in
   left-margin = .5\in
   right-margin = .5\in
-  %outer-margin = 0.5\in
-  %page-count = #2
-  %between-system-space = 20\mm
-  first-page-number = #18
+  first-page-number = #1
   print-first-page-number =  ##t
+  system-system-spacing.basic-distance = #18
+  systems-per-page = #3
+%  score-system-spacing =
+%    #'((basic-distance . 12)
+%       (minimum-distance . 6)
+%       (padding . 1)
+%       (stretchability . 12))
   oddHeaderMarkup = \markup \fill-line { " "  }
   evenHeaderMarkup = \markup \fill-line { " "  }
   oddFooterMarkup = \markup { 
@@ -61,6 +63,7 @@
                           \line { \tiny \bold \smallCaps  "    Page: "   \on-the-fly #print-page-number-check-first \fromproperty #'page:page-number-string  } 
                         } 
                       }
+                      ragged-bottom = ##t
 }
 
 \layout {
@@ -93,34 +96,34 @@ soprano = \relative c'' {
 alto = \relative c' {
   \global
   % Music follows here.
-  a'4 d, d8( e) fis4 g a gis e b' e, d cis b cis8( d4 cis8)  d4
-  a'4 d, d8( e) fis4 g a gis e b' e, d cis b cis8( d4 cis8) d4
-  d4 cis( d) e8( d) b4 cis2 
-  d8( e) fis4 g8( fis) e4 fis fis fis16( gis) a8 a( gis) e4 g! 
-  g dis8( e) fis4 e dis 
-  fis fis8[( e)] d!( e) fis[( e)] d4 e8( a, d4~d cis) a
+  a'4 d, d8( e) fis4 g a gis e b' e, d cis b cis8( d4 cis8)  d4\fermata
+  a'4 d, d8( e) fis4 g a gis e\fermata b' e, d cis b cis8( d4 cis8) d4\fermata
+  d4 cis( d) e8( d) b4 cis2\fermata 
+  d8( e) fis4 g8( fis) e4 fis\fermata fis fis16( gis) a8 a( gis) e4\fermata g! 
+  g dis8( e) fis4 e dis\fermata 
+  fis fis8[( e)] d!( e) fis[( e)] d4 e8( a, d4~d cis) a\fermata
 }
 
 tenor = \relative c' {
   \global
   % Music follows here.
-  fis4 fis b,8( cis) d4 e fis4. e16( d) cis4 fis,8( gis) ais4 b fis'8( e) d4 e8( a,4 gis8) fis4
-  fis'4 fis b,8( cis) d4 e fis4. e16( d) cis4 fis,8( gis) ais4 b fis'8( e) d4 e8( a,4 gis8) fis4
-  fis8( g?) a4( gis8[ fis)] e( fis) e4 e2
-  a4 d d a a a b8[ e] fis( e) cis4 e
-  d8( e) fis4 b, b b b a b8( cis) d4 g,8( fis) e4( fis16 g a8 b4 a8 g) fis4
+  fis4 fis b,8( cis) d4 e fis4. e16( d) cis4 fis,8( gis) ais4 b fis'8( e) d4 e8( a,4 gis8) fis4\fermata 
+  fis'4 fis b,8( cis) d4 e fis4. e16( d) cis4\fermata fis,8( gis) ais4 b fis'8( e) d4 e8( a,4 gis8) fis4\fermata
+  fis8( g?) a4( gis8[ fis)] e( fis) e4 e2\fermata
+  a4 d d a a\fermata a b8[ e] fis( e) cis4\fermata e
+  d8( e) fis4 b, b b\fermata b a b8( cis) d4 g,8( fis) e4( fis16 g a8 b4 a8 g) fis4\fermata
 }
 
 bass = \relative c {
   \global
   % Music follows here.
-  d'8( cis) b4 a8( g) fis4 e d e a,_\fermata b cis d8( e) fis4 g?8( fis) e( d a4) d_\fermata
-  d'8( cis) b4 a8( g) fis4 e d e a,_\fermata b cis d8( e) fis4 g?8( fis) e( d a4) d_\fermata
+  d'8( cis) b4 a8( g) fis4 e d e a, b cis d8( e) fis4 g?8( fis) e( d a4) d\fermata
+  d'8( cis) b4 a8( g) fis4 e d e a,\fermata b cis d8( e) fis4 g?8( fis) e( d a4) d\fermata
   d8( e) fis4( e8[ d)] cis( d) e4 
-  a,2_\fermata fis'4 e8( d) g4 a d,_\fermata 
-  fis b,8[ cis] d( e) a,4_\fermata
-  e'8( fis) g4 fis8( e) dis4 e b_\fermata 
-  b fis' g d8( cis) b4 cis( d g, a) d,_\fermata
+  a,2\fermata fis'4 e8( d) g4 a d,\fermata 
+  fis b,8[ cis] d( e) a,4\fermata
+  e'8( fis) g4 fis8( e) dis4 e b\fermata 
+  b fis' g d8( cis) b4 cis( d g, a) d,\fermata
 }
 
 verseOne = \lyricmode {
@@ -142,102 +145,55 @@ verseOne = \lyricmode {
 verseTwo = \lyricmode {
   \set stanza = "2."
   % Lyrics follow here.
-  Mit uns' -- rer Macht ist nichts ge -- than, 
-  Wir find gar bald ver -- lo -- ren
-  Es streit' für uns der rech -- te Mann, 
-  Den Gott hat selbst er -- fo -- ren. 
-  Fragst du, wer der ist?
-  Er heißt Je -- sus Christ, 
-  Der Herr Ze -- ba -- oth, 
-  Und ist fein an -- der' Gott, 
-  Das feld muß Er be -- hal -- ten.
+  
 }
 
 verseThree = \lyricmode {
   \set stanza = "3."
   % Lyrics follow here.
-  Und wenn die Welt voll Teu -- fel wär' 
-  Und wollt' uns gar ver -- schlin -- gen
   
-  So fürch -- ten wir uns nicht so sehr, 
-  Es soll uns doch ge -- lin -- gen. 
-  
-  Der Fürht die -- ser Welt, 
-  Wie sau'r er sich stellt,
-  
-  Thut er uns doch nicht, 
-  Das macht, er ist ge -- richt't, 
-  Ein Wört -- lein fann ihn fäl -- len.
 }
 
 verseFour = \lyricmode {
   \set stanza = "4."
   % Lyrics follow here.
-    Das Wort sie sol -- len laf -- fen stah'n, 
-  Und sein Danf da -- zu ha -- ben: 
   
-  Er ist bei uns wohl auf dem Plan
-  Mit sei -- nem Geist und Ga -- ben. 
-  
-  Neh -- men sie den Leib, 
-  Gut, Ehr', Kind und Weib, 
-  Laß fah -- ren da -- hin, 
-  
-  Sie ha -- ben's fein Ge -- winn, 
-  Das Reich muß uns doch blei -- ben.
-
 }
-
-figBass = \figuremode {
-  \global
-  % Figures follow here.
-  %<5 3>1
-}
-
-choirPart = \new ChoirStaff <<
-  \new Staff \with {
-    %instrumentName = \markup \center-column { "S." "A." }
-  } <<
-    \new Voice = "soprano" \with {
-      \consists "Ambitus_engraver"
-    } { \voiceOne \soprano }
-    \new Voice = "alto" \with {
-      \consists "Ambitus_engraver"
-      \override Ambitus #'X-offset = #2.0
-    } { \voiceTwo \alto }
-  >>
-  \new Lyrics \with {
-    \override VerticalAxisGroup #'staff-affinity = #CENTER
-  } \lyricsto "soprano" \verseOne
-  \new Lyrics \with {
-    \override VerticalAxisGroup #'staff-affinity = #CENTER
-  } \lyricsto "soprano" \verseTwo
-  \new Lyrics \with {
-    \override VerticalAxisGroup #'staff-affinity = #CENTER
-  } \lyricsto "soprano" \verseThree
-  \new Lyrics \with {
-    \override VerticalAxisGroup #'staff-affinity = #CENTER
-  } \lyricsto "soprano" \verseFour
-  \new Staff \with {
-    %instrumentName = \markup \center-column { "T." "B." }
-  } <<
-    \clef bass
-    \new Voice = "tenor" \with {
-      \consists "Ambitus_engraver"
-    } { \voiceOne \tenor }
-    \new Voice = "bass" \with {
-      \consists "Ambitus_engraver"
-      \override Ambitus #'X-offset = #2.0
-    } { \voiceTwo \bass }
-  >>
->>
-
-bassFiguresPart = \new FiguredBass \figBass
 
 \score {
-  <<
-    \choirPart
-    \bassFiguresPart
+  \new ChoirStaff <<
+    \new Staff \with {
+      %instrumentName = "S."
+      \consists "Ambitus_engraver"
+    } { \soprano }
+    \addlyrics { \verseOne }
+    \addlyrics { \verseTwo }
+    \addlyrics { \verseThree }
+    \addlyrics { \verseFour }
+    \new Staff \with {
+      %instrumentName = "A."
+      \consists "Ambitus_engraver"
+    } { \alto }
+    \addlyrics { \verseOne }
+    \addlyrics { \verseTwo }
+    \addlyrics { \verseThree }
+    \addlyrics { \verseFour }
+    \new Staff \with {
+      %instrumentName = "T."
+      \consists "Ambitus_engraver"
+    } { \clef "treble_8" \tenor }
+    \addlyrics { \verseOne }
+    \addlyrics { \verseTwo }
+    \addlyrics { \verseThree }
+    \addlyrics { \verseFour }
+    \new Staff \with {
+      %instrumentName = "B."
+      \consists "Ambitus_engraver"
+    } { \clef bass \bass }
+    \addlyrics { \verseOne }
+    \addlyrics { \verseTwo }
+    \addlyrics { \verseThree }
+    \addlyrics { \verseFour }
   >>
   \layout {
     indent = 0
@@ -336,3 +292,4 @@ bassFiguresPart = \new FiguredBass \figBass
 %  }
 %}
 %}
+
