@@ -13,9 +13,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \header {
-  %title = "Title"
+    %title = "Title"
   %subtitle = "Subtitle"
   composer = "Johann Sebastian Bach (1685-1750)"
+  %arranger = "Used in Cantata BWV 80"
   title = \markup { \override #'(font-name . "KaiserzeitGotisch") \fontsize #8 { "Allein Gott in der Höh' sei Ehr'"}}
   %Make a Crown
   %title = \markup {   \override #'(font-name . "IntellectaCrowns") \fontsize #10 {
@@ -28,7 +29,7 @@
 }
 
 %#(set! paper-alist (cons '("halfLegal" . (cons (* 8.5 in) (* 9 in))) paper-alist))
-#(set-global-staff-size 18)
+#(set-global-staff-size 17)
 
 \paper {
   #(set-paper-size "letter")
@@ -36,12 +37,14 @@
    #(include-special-characters)
   %between-system-space = 10\mm
   two-sided = true
-  top-margin = .5\in
-  bottom-margin = .5\in 
+  top-margin = .3\in
+  bottom-margin = .3\in 
   %inner-margin = 1\in
   left-margin = .5\in
   right-margin = .5\in
-    first-page-number = #18
+  system-system-spacing.basic-distance = #24
+  systems-per-page = #2
+  first-page-number = #18
   print-first-page-number =  ##t
   oddHeaderMarkup = \markup \fill-line { " "  }
   evenHeaderMarkup = \markup \fill-line { " "  }
@@ -57,7 +60,7 @@
                           \line { \tiny \bold \smallCaps  "    Page: "   \on-the-fly #print-page-number-check-first \fromproperty #'page:page-number-string  } 
                         } 
                       }
-  ragged-bottom = ##t                      
+                      ragged-bottom = ##t
 }
 
 \layout {
@@ -136,7 +139,7 @@ verseTwo = \lyricmode {
   Re -- gierst ohn' al -- les Wan -- ken.
   Ganz un -- ge -- meß'n ist dei -- ne Macht,
   Fort g'schieht, was dein Will' hat be -- dacht;
-  Wohl uns des fei -- nen Her -- ren! 
+  Wohl uns des fei -- nen Her -- ren!
 }
 
 verseThree = \lyricmode {
@@ -160,59 +163,43 @@ verseFour = \lyricmode {
   Die Je -- sus Christ er -- lö -- set
   Durch gro -- ße Mart'r und bit -- tern Tod,
   Ab -- wend all un -- sern Jamm'r und Not!
-  Da -- rauf wir uns ver -- la -- ßen. 
+  Da -- rauf wir uns ver -- la -- ßen.
 }
-
-figBass = \figuremode {
-  \global
-  % Figures follow here.
-  %<5 3>1
-}
-
-choirPart = \new ChoirStaff <<
-  \new Staff \with {
-    %instrumentName = \markup \center-column { "S." "A." }
-  } <<
-    \new Voice = "soprano" \with {
-      \consists "Ambitus_engraver"
-    } { \voiceOne \soprano }
-    \new Voice = "alto" \with {
-      \consists "Ambitus_engraver"
-      \override Ambitus #'X-offset = #2.0
-    } { \voiceTwo \alto }
-  >>
-  \new Lyrics \with {
-    \override VerticalAxisGroup #'staff-affinity = #CENTER
-  } \lyricsto "soprano" \verseOne
-  \new Lyrics \with {
-    \override VerticalAxisGroup #'staff-affinity = #CENTER
-  } \lyricsto "soprano" \verseTwo
-  \new Lyrics \with {
-    \override VerticalAxisGroup #'staff-affinity = #CENTER
-  } \lyricsto "soprano" \verseThree
-  \new Lyrics \with {
-    \override VerticalAxisGroup #'staff-affinity = #CENTER
-  } \lyricsto "soprano" \verseFour
-  \new Staff \with {
-    %instrumentName = \markup \center-column { "T." "B." }
-  } <<
-    \clef bass
-    \new Voice = "tenor" \with {
-      \consists "Ambitus_engraver"
-    } { \voiceOne \tenor }
-    \new Voice = "bass" \with {
-      \consists "Ambitus_engraver"
-      \override Ambitus #'X-offset = #2.0
-    } { \voiceTwo \bass }
-  >>
->>
-
-bassFiguresPart = \new FiguredBass \figBass
 
 \score {
-  <<
-    \choirPart
-    \bassFiguresPart
+  \new ChoirStaff <<
+    \new Staff \with {
+      %instrumentName = "S."
+      \consists "Ambitus_engraver"
+    } { \soprano }
+    \addlyrics { \verseOne }
+    \addlyrics { \verseTwo }
+    \addlyrics { \verseThree }
+    \addlyrics { \verseFour }
+    \new Staff \with {
+      %instrumentName = "A."
+      \consists "Ambitus_engraver"
+    } { \alto }
+    \addlyrics { \verseOne }
+    \addlyrics { \verseTwo }
+    \addlyrics { \verseThree }
+    \addlyrics { \verseFour }
+    \new Staff \with {
+      %instrumentName = "T."
+      \consists "Ambitus_engraver"
+    } { \clef "treble_8" \tenor }
+    \addlyrics { \verseOne }
+    \addlyrics { \verseTwo }
+    \addlyrics { \verseThree }
+    \addlyrics { \verseFour }
+    \new Staff \with {
+      %instrumentName = "B."
+      \consists "Ambitus_engraver"
+    } { \clef bass \bass }
+    \addlyrics { \verseOne }
+    \addlyrics { \verseTwo }
+    \addlyrics { \verseThree }
+    \addlyrics { \verseFour }
   >>
   \layout {
     indent = 0
@@ -311,3 +298,4 @@ bassFiguresPart = \new FiguredBass \figBass
 %  }
 %}
 %}
+
