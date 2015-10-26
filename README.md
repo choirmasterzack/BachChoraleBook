@@ -9,13 +9,13 @@ I am going to try to write in both closed and open score settings.   I will labe
 
 Here are the chorales that I will initially set (+ means in progress/* means complete): 
 
-Allein Gott 
+Allein Gott in der Hoh sei Ehr' (+)
 Alle Menschen mussen sterben  
 Aus Meine Herzen Grunde 
 Aus Tiefer Not Schrei ich zu dir 
 Christ Lag in Todesbanden 
 Dir, dir, Jehovah Will ich singen
-Ein Feste Burg (+)
+Ein Feste Burg (*)
 Erhalt uns Herr
 Ermuntre Dich
 Freu dich sehr, O meine Seele
