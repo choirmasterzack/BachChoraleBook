@@ -16,6 +16,7 @@
   %title = "Title"
   %subtitle = "Subtitle"
   composer = "Johann Sebastian Bach (1685-1750)"
+  %arranger = "Used in Cantata BWV 80"
   title = \markup { \override #'(font-name . "KaiserzeitGotisch") \fontsize #8 { "Allein Gott in der Höh' sei Ehr"}}
   %Make a Crown
   %title = \markup {   \override #'(font-name . "IntellectaCrowns") \fontsize #10 {
@@ -28,22 +29,17 @@
 }
 
 %#(set! paper-alist (cons '("halfLegal" . (cons (* 8.5 in) (* 9 in))) paper-alist))
-#(set-global-staff-size 18)
+#(set-global-staff-size 16)
 
 \paper {
   #(set-paper-size "letter")
   page-break = #ly:minimal-breaking
    #(include-special-characters)
-  %between-system-space = 10\mm
   two-sided = true
-  top-margin = .5\in
-  bottom-margin = .5\in 
-  %inner-margin = 1\in
+  top-margin = .2\in
+  bottom-margin = .2\in 
   left-margin = .5\in
   right-margin = .5\in
-  %outer-margin = 0.5\in
-  %page-count = #2
-  %between-system-space = 20\mm
   first-page-number = #18
   print-first-page-number =  ##t
   oddHeaderMarkup = \markup \fill-line { " "  }
@@ -59,7 +55,10 @@
                           \line { \tiny \bold \smallCaps "Bach::Riemenschneider/vonMenchhofen"  }
                           \line { \tiny \bold \smallCaps  "    Page: "   \on-the-fly #print-page-number-check-first \fromproperty #'page:page-number-string  } 
                         } 
-                      }
+                      } 
+  ragged-bottom = ##t
+  system-system-spacing.basic-distance = #22
+  systems-per-page = #2
 }
 
 \layout {
@@ -102,32 +101,32 @@ soprano = \relative c'' {
 alto = \relative c' {
   \global
   % Music follows here.
-  d8( fis) g4 g fis e8( fis) g4. fis8 g4 g g fis8( g) a( g) fis4 g~g8( fis) d4 
-  d8( fis) g4 g fis e8( fis) g4. fis8 g4 g g fis8( g) a( g) fis4 g~g8( fis) d4
+  d8( fis) g4 g fis e8( fis) g4. fis8 g4\fermata g g fis8( g) a( g) fis4 g4.( fis8) d4\fermata 
+  d8( fis) g4 g fis e8( fis) g4. fis8 g4\fermata g g fis8( g) a( g) fis4 g4.( fis8) d4\fermata
   
-  d4 d d e e e8[( c)] f!( e) e4 fis g f! e e8( fis) g4~g8( fis16 e) dis4
-  e4 d!8[( e)] fis( g) a[( g)]~g( fis) e( d) e[( d)] d4  
+  d4 d d e e e8[( c)] f!( e) e4\fermata fis g f! e e8( fis) g4 g8( fis16 e) dis4\fermata
+  e4 d!8[( e)] fis( g) a[( g)] g( fis) e( d e[ d)] d4\fermata 
 }
 
 tenor = \relative c' {
   \global
   % Music follows here.
-  b8( c) d4 e a, a d d d e d d e8( d) d[( c)] b4 e8( d16 c) b4
-  b8( c) d4 e a, a d d d e d d e8( d) d[( c)] b4 e8( d16 c) b4
+  b8( c) d4 e a, a d d d\fermata e d d e8( d) d[( c)] b4( e8 d16 c) b4\fermata
+  b8( c) d4 e a, a d d d\fermata e d d e8( d) d[( c)] b4( e8 d16 c) b4\fermata
   
-  b4 a g g gis a d c a d c b c8( d) e4 e, fis g8( a) b[( c)] d( g,) fis( g16 fis) e8( fis) 
-  g4. fis8 b4
+  b4 a g g gis a d c\fermata a d c b c8( d) e4 e, fis\fermata g8( a) b[( c)] d( g,) fis( g16 fis) e8( fis) 
+  g4.( fis8) b4\fermata
 }
 
 bass = \relative c {
   \global
   % Music follows here.
-  g4 g'8( fis) e4 d a b8( c) d4 g,_\fermata e' b8( c) d4 a8( b) c[( d)] e( d) c[( d)] g,4_\fermata
-  g4 g'8( fis) e4 d a b8( c) d4 g,_\fermata e' b8( c) d4 a8( b) c[( d)] e( d) c[( d)] g,4_\fermata
+  g4 g'8( fis) e4 d a b8( c) d4 g,\fermata e' b8( c) d4 a8( b) c[( d)] e( d c[ d)] g,4\fermata
+  g4 g'8( fis) e4 d a b8( c) d4 g,\fermata e' b8( c) d4 a8( b) c[( d)] e( d c[ d)] g,4\fermata
   
-  g' fis f! e d c8( f!) d[( e)] a,4_\fermata
-  d8( c) b4 a gis a e'8( d) c4 b_\fermata
-  e8( fis) g4 fis8( e) dis[( e)] cis( d) e( b) c![( d)] g,_\fermata
+  g' fis f! e d c8( f!) d[( e)] a,4\fermata
+  d8( c) b4 a gis a e'8( d) c4 b\fermata
+  e8( fis) g4 fis8( e) dis[( e)] cis( d) e( b c![ d)] g,\fermata
 }
 
 verseOne = \lyricmode {
@@ -178,12 +177,6 @@ verseFour = \lyricmode {
   Da -- rauf wir uns ver -- la -- ßen.
 }
 
-figBass = \figuremode {
-  \global
-  % Figures follow here.
-  %<5 3>1
-}
-
 trumpetCPart = \new Staff \with {
   fontSize = #-3
   \override StaffSymbol.staff-space = #(magstep -3)
@@ -193,54 +186,49 @@ trumpetCPart = \new Staff \with {
 
 choirPart = \new ChoirStaff <<
   \new Staff \with {
-    %instrumentName = \markup \center-column { "S." "A." }
-  } <<
-    \new Voice = "soprano" \with {
-      \consists "Ambitus_engraver"
-    } { \voiceOne \soprano }
-    \new Voice = "alto" \with {
-      \consists "Ambitus_engraver"
-      \override Ambitus #'X-offset = #2.0
-    } { \voiceTwo \alto }
-  >>
-  \new Lyrics \with {
-    \override VerticalAxisGroup #'staff-affinity = #CENTER
-  } \lyricsto "soprano" \verseOne
-  \new Lyrics \with {
-    \override VerticalAxisGroup #'staff-affinity = #CENTER
-  } \lyricsto "soprano" \verseTwo
-  \new Lyrics \with {
-    \override VerticalAxisGroup #'staff-affinity = #CENTER
-  } \lyricsto "soprano" \verseThree
-  \new Lyrics \with {
-    \override VerticalAxisGroup #'staff-affinity = #CENTER
-  } \lyricsto "soprano" \verseFour
+%    instrumentName = "S."
+    \consists "Ambitus_engraver"
+  } { \soprano }
+    \addlyrics { \verseOne }
+    \addlyrics { \verseTwo }
+    \addlyrics { \verseThree }
+    \addlyrics { \verseFour } 
   \new Staff \with {
-    %instrumentName = \markup \center-column { "T." "B." }
-  } <<
-    \clef bass
-    \new Voice = "tenor" \with {
-      \consists "Ambitus_engraver"
-    } { \voiceOne \tenor }
-    \new Voice = "bass" \with {
-      \consists "Ambitus_engraver"
-      \override Ambitus #'X-offset = #2.0
-    } { \voiceTwo \bass }
-  >>
+    %instrumentName = "A."
+    \consists "Ambitus_engraver"
+  } { \alto }
+    \addlyrics { \verseOne }
+    \addlyrics { \verseTwo }
+    \addlyrics { \verseThree }
+    \addlyrics { \verseFour }   
+    \new Staff \with {
+    %instrumentName = "T."
+    \consists "Ambitus_engraver"
+  } { \clef "treble_8" \tenor }
+    \addlyrics { \verseOne }
+    \addlyrics { \verseTwo }
+    \addlyrics { \verseThree }
+    \addlyrics { \verseFour } 
+  \new Staff \with {
+    %instrumentName = "B."
+    \consists "Ambitus_engraver"
+  } { \clef bass \bass }
+    \addlyrics { \verseOne }
+    \addlyrics { \verseTwo }
+    \addlyrics { \verseThree }
+    \addlyrics { \verseFour } 
 >>
-
-bassFiguresPart = \new FiguredBass \figBass
 
 \score {
   <<
     \trumpetCPart
     \choirPart
-    \bassFiguresPart
   >>
   \layout {
-    indent = 0
+    indent = #0
   }
 }
+
 
 %%%%%%%%%%% USE THIS SECTION FOR TWO COLUMN TEXT BELOW MUSIC
 %
@@ -334,3 +322,4 @@ bassFiguresPart = \new FiguredBass \figBass
 %  }
 %}
 %}
+

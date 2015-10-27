@@ -32,47 +32,14 @@
 #(set-global-staff-size 17)
 
 \paper {
-#(set-paper-size "letter")
+  #(set-paper-size "letter")
   page-break = #ly:minimal-breaking
    #(include-special-characters)
-  %between-system-space = 10\mm
   two-sided = true
-  top-margin = .5\in
-  bottom-margin = .5\in 
-  %inner-margin = 1\in
+  top-margin = .3\in
+  bottom-margin = .3\in 
   left-margin = .5\in
   right-margin = .5\in
-  %outer-margin = 0.5\in
-  %page-count = #2
-  %between-system-space = 20\mm
-  first-page-number = #18
-  print-first-page-number =  ##t
-  oddHeaderMarkup = \markup \fill-line { " "  }
-  evenHeaderMarkup = \markup \fill-line { " "  }
-  oddFooterMarkup = \markup { 
-                        \fill-line {
-                          \line {   \tiny \bold \smallCaps "Bach::Riemenschneider/vonMenchhofen "    }
-                          \line { \tiny \bold \smallCaps "Page: "   \on-the-fly #print-page-number-check-first \fromproperty #'page:page-number-string } 
-                        } 
-                      }
-  evenFooterMarkup = \markup { 
-                        \fill-line {
-                          \line { \tiny \bold \smallCaps "Bach::Riemenschneider/vonMenchhofen"  }
-                          \line { \tiny \bold \smallCaps  "    Page: "   \on-the-fly #print-page-number-check-first \fromproperty #'page:page-number-string  } 
-                        } 
-                      }#(set-paper-size "letter")
-  page-break = #ly:minimal-breaking
-   #(include-special-characters)
-  %between-system-space = 10\mm
-  two-sided = true
-  top-margin = .5\in
-  bottom-margin = .5\in 
-  %inner-margin = 1\in
-  left-margin = .5\in
-  right-margin = .5\in
-  %outer-margin = 0.5\in
-  %page-count = #2
-  %between-system-space = 20\mm
   first-page-number = #18
   print-first-page-number =  ##t
   oddHeaderMarkup = \markup \fill-line { " "  }
@@ -89,6 +56,9 @@
                           \line { \tiny \bold \smallCaps  "    Page: "   \on-the-fly #print-page-number-check-first \fromproperty #'page:page-number-string  } 
                         } 
                       }
+  ragged-bottom = ##t
+  system-system-spacing.basic-distance = #24
+  systems-per-page = #2
 }
 
 \layout {
