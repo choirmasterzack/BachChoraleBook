@@ -9,8 +9,8 @@ I am going to try to write in both closed and open score settings.   I will labe
 
 Here are the chorales that I will initially set (+ means in progress/* means complete): 
 
-Allein Gott in der Hoh sei Ehr' (+)
-Alle Menschen mussen sterben  
+Allein Gott in der Hoh sei Ehr' (*); \r\n
+Alle Menschen mussen sterben; \r\n  
 Aus Meine Herzen Grunde 
 Aus Tiefer Not Schrei ich zu dir 
 Christ Lag in Todesbanden 
